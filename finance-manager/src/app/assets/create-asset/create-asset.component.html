@@ -1,1 +1,66 @@
-<p>create-asset works!</p>
+<h1 mat-dialog-title>New Asset</h1>
+<div mat-dialog-content>
+  <p>{{data.name}}</p>
+  <form [formGroup]="createAssetForm">
+
+    <div class="row">
+      <mat-form-field appearance="outline" required>
+        <mat-label>Asset Name</mat-label>
+        <input matInput formControlName="name" #assetName>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+          <mat-form-field appearance="outline">
+              <mat-select formControlName="type">
+                  <mat-option value="investment">Investment</mat-option>
+                  <mat-option value="savings">Cash Savings</mat-option>
+                  <mat-option value="other">Other</mat-option>
+              </mat-select>
+              <mat-label>Asset Type</mat-label>
+          </mat-form-field>
+      </div>
+      <div class="col-sm-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Current Asset Amount</mat-label>
+          <input matInput formControlName="amount">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <mat-accordion class="asset-goal-accordion">
+      <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title class="asset-goal-accordion-title">
+              <mat-icon>add</mat-icon> Add Goal
+          </mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+          <div class="row">
+            <div class="col-sm-6">
+              <mat-form-field appearance="outline">
+                <mat-label>Asset Goal</mat-label>
+                <input matInput [(ngModel)]="data.animal">
+              </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+              <mat-form-field appearance="outline">
+                <mat-label>Date to Achieve By</mat-label>
+                <input matInput [matDatepicker]="picker">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="warn" (click)="onNoClick()">Cancel</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="data.animal" cdkFocusInitial (click)="openSnackBar('New Asset ' + assetName.value + ' has been added!', 'X')">Add Asset</button>
+</div>
+

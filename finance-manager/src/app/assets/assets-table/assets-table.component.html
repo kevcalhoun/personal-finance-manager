@@ -1,1 +1,85 @@
-<p>assets-table works!</p>
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortActionDescription="Sort by name"
+      >
+        Asset Name
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    </ng-container>
+  
+    <!-- Type Column -->
+    <ng-container matColumnDef="type">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortActionDescription="Sort by type"
+      >
+        Asset Type
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.type }}</td>
+    </ng-container>
+  
+    <!-- Amount Column -->
+    <ng-container matColumnDef="amount">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortActionDescription="Sort by amount"
+      >
+        Asset Amount
+      </th>
+      <td mat-cell *matCellDef="let element" class="amount-value">
+        ${{ element.amount }}
+      </td>
+    </ng-container>
+    
+  
+    <!-- Goal Column -->
+    <ng-container matColumnDef="goal">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortActionDescription="Sort by amount"
+      >
+        Goal
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.goal }}</td>
+    </ng-container>
+  
+    <!-- Goal Deadline Column -->
+    <ng-container matColumnDef="goalDeadline">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortActionDescription="Sort by date"
+      >
+        Goal Deadline
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.goalDeadline }}</td>
+    </ng-container>
+  
+    <!-- Goal Progress Column -->
+    <ng-container matColumnDef="goalProgress">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortActionDescription="Sort by goalProgress"
+      >
+        Goal Progress
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.goalProgress }}</td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

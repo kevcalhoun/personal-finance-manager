@@ -1,0 +1,17 @@
+table {
+    width: 100%;
+    th.mat-sort-header-sorted {
+        color: black;
+    }
+    .amount-value{
+        color: green;
+    }
+      
+    .mat-row:hover .mat-cell {
+        background-color: rgb(241, 240, 240);
+    }
+    
+    .demo-row-is-clicked {
+        font-weight: bold;
+    }
+}
