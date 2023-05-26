@@ -1,1 +1,27 @@
-<p>assets works!</p>
+<app-header [title]="title"></app-header>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card border-success text-bg-light mb-3">
+                
+            <div class="card-body">
+                <h3>Total Assets: <b>$75,000</b></h3>
+
+                <h4>Total Progress Towards Your Asset Goals: <b>20%</b></h4>
+
+                <h4>+/- this Month: <b>+ $650</b></h4>
+
+                <h4>+/- this Year: <b> + $1,850</b></h4>
+            
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="add-profile-button-container">
+    <button mat-icon-button color="primary" 
+            aria-label="Add New Asset"
+            (click)="openNewAssetDialog()">
+            <mat-icon>add</mat-icon>
+    </button>
+</div>
+<app-assets-table></app-assets-table>
