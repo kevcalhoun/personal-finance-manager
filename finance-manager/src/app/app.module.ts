@@ -22,6 +22,7 @@ import { CreateLiabilityComponent } from './liabilities/create-liability/create-
 import { ProfilesComponent } from './profiles/profiles.component';
 import { CreateProfileComponent } from './profiles/create-profile/create-profile.component';
 import { UpdateProfileComponent } from './profiles/update-profile/update-profile.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { UpdateProfileComponent } from './profiles/update-profile/update-profile
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
