@@ -1,0 +1,44 @@
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+    <!-- Description Column -->
+    <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by budget">
+            Budget Description
+        </th>
+        <td mat-cell *matCellDef="let element">{{element.description}}</td>
+    </ng-container>
+    
+    <!-- Category Column -->
+    <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by category">
+            Budget Category
+        </th>
+        <td mat-cell *matCellDef="let element">{{element.category}}</td>
+    </ng-container>
+    
+    <!-- Payment Source Column -->
+    <ng-container matColumnDef="paymentSource">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by account">
+            Payment Source
+        </th>
+        <td mat-cell *matCellDef="let element">{{element.paymentSource}} </td>
+    </ng-container>
+    
+    <!-- Amount Column -->
+    <ng-container matColumnDef="amount">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by amount">
+            Amount
+        </th>
+        <td mat-cell *matCellDef="let element">${{element.amount}}</td>
+    </ng-container>
+
+    <!-- Progress Status/Remaining Column -->
+    <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by status">
+            Status
+        </th>
+        <td mat-cell *matCellDef="let element">{{element.status}}</td>
+    </ng-container>
+        
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

@@ -1,1 +1,47 @@
-<p>profiles works!</p>
+<h1>Profiles</h1>
+
+<div class="add-profile-button-container">
+    <button mat-mini-fab color="primary" 
+            aria-label="Add New Profile"
+            (click)="openNewProfileDialog()">
+            <mat-icon>add</mat-icon>
+    </button>
+</div>
+
+<div class="row">
+    <div class="col-sm-4">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>Kendall</mat-card-title>
+                <img mat-card-avatar
+                    src="https://mdbootstrap.com/img/new/avatars/6.jpg"
+                    alt=""
+                    style="width: 45px; height: 45px"
+                    class="rounded-circle"/>
+                <mat-card-subtitle>Joined 9/20/2022</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content></mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button (click)="openEditProfileDialog()">Edit Profile</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+    
+    <div class="col-sm-4">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>Kevin</mat-card-title>
+                <img mat-card-avatar
+                    src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+                    alt=""
+                    style="width: 45px; height: 45px"
+                    class="rounded-circle"/>
+                <mat-card-subtitle>Joined 9/20/2022</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content></mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button (click)="openEditProfileDialog()">Edit Profile</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>  
