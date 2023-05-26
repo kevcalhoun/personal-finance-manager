@@ -1,1 +1,56 @@
-<p>profile-selector works!</p>
+
+
+
+<mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                            (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                    <div class="d-flex align-items-center">
+                            <img
+                                src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+                                alt=""
+                                style="width: 40px; height: 40px"
+                                class="rounded-circle"/>
+                                <div class="ms-3">
+                                    <p class="fw-bold mb-1">Kevin</p>
+                                </div>    
+                        </div>
+    
+            </mat-panel-title>
+            <mat-panel-description>
+                
+                
+     
+                Assets: $75,000 | Liabilities: 40,000 | Net Worth: $30,000 | Credit Score: 750
+            
+                <mat-icon>account_circle</mat-icon>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <!-- PANEL CONTENT -->
+        <div class="row">
+            <!-- PROFILE SELECTOR DROPDOWN -->
+            <div class="col">
+                
+                <form [formGroup]="options">
+                    <mat-form-field appearance="outline"
+                        [hideRequiredMarker]="hideRequiredControl.value"
+                        [floatLabel]="getFloatLabelValue()">
+                        <mat-select>
+                            <mat-option value="household">Household</mat-option>
+                            <mat-option value="kevin">Kevin</mat-option>
+                            <mat-option value="kendall">Kendall</mat-option>
+                        </mat-select>
+                        <mat-label><mat-icon>perm_identity</mat-icon> <b> Profile</b></mat-label>
+                    </mat-form-field>
+                 
+                </form>
+                <button mat-raised-button color="primary">Switch Profile</button>
+            </div>
+
+        </div>
+        <!-- <mat-action-row>
+            <button mat-button color="primary">Change Profile</button>
+        </mat-action-row> -->
+    </mat-expansion-panel>
+</mat-accordion>

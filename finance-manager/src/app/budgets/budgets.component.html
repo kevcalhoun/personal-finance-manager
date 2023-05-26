@@ -1,1 +1,95 @@
-<p>budgets works!</p>
+<div class="row">
+    <div class="col-sm-12">
+      <div class="card border-dark text-bg-light mb-3">
+        <div class="card-body">
+          <h5 class="card-title">Budget Snapshot</h5>
+          <div class="row">
+            <div class="col-sm-2">
+              <div class="d-flex align-items-center">
+                <p><b>September 2022</b></p>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="d-flex align-items-center">
+                <img
+                  src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+                  alt=""
+                  style="width: 45px; height: 45px"
+                  class="rounded-circle"
+                />
+                <div class="ms-3">
+                  <p class="fw-bold mb-1">Kevin</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="row" id="month-picker">
+  <div class="col-sm-2">
+    <div class="form-floating">
+      <select
+        class="form-select"
+        id="floatingSelectMonth"
+        aria-label=".form-select-lg example"
+      >
+        <option selected>September</option>
+        <option value="1">October</option>
+        <option value="2">November</option>
+        <option value="3">December</option>
+      </select>
+      <label for="floatingSelectMonth">Month</label>
+    </div>
+  </div>
+  <div class="col-sm-2">
+    <div class="form-floating">
+      <select
+        class="form-select"
+        id="floatingSelectYear"
+        aria-label=".form-select-lg example"
+      >
+        <option selected>2022</option>
+        <option value="1">2023</option>
+        <option value="2">2024</option>
+        <option value="3">2025</option>
+      </select>
+      <label for="floatingSelectYear">Year</label>
+    </div>
+  </div>
+  <div class="col-sm-2">
+    <div class="form-floating">
+      <select
+        class="form-select"
+        id="floatingSelectProfile"
+        aria-label=".form-select-lg example"
+      >
+        <option selected>Kevin</option>
+        <option value="1">Kendall</option>
+        <option value="2">Household</option>
+      </select>
+      <label for="floatingSelectProfile">Profile</label>
+    </div>
+  </div>
+</div>
+
+
+
+<mat-tab-group>
+  <mat-tab label="Pay Period September 1 - 14">
+    <app-budget-table></app-budget-table>
+  </mat-tab>
+  <mat-tab label="Pay Period September 15 - 30">
+    <app-budget-table></app-budget-table>
+  </mat-tab>
+  <mat-tab label="September Overview">
+    <app-budget-table></app-budget-table>
+  </mat-tab>
+</mat-tab-group>
+
+<p>
+  ***Create Dropdown for Budgets Nav Item with 2 options => Budget Tracker & Log
+  Expenses
+</p>

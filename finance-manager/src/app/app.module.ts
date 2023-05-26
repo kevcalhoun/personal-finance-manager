@@ -43,6 +43,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSortModule } from '@angular/material/sort';
 import { MatNativeDateModule } from '@angular/material/core';
+import { BudgetTableComponent } from './budgets/budget-table/budget-table.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     ProfilesComponent,
     CreateProfileComponent,
     UpdateProfileComponent,
+    BudgetTableComponent,
   ],
   imports: [
     AppRoutingModule,
