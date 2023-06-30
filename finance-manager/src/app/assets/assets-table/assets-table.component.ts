@@ -1,58 +1,23 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import {MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { AssetService } from '../assets.service';
+import { Asset } from '../models/asset';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { CreateAssetComponent } from '../create-asset/create-asset.component';
+import {ConfirmDialogComponent } from '../../shared/confirm-dialog/confirm-dialog.component';
 
-export interface Assets {
-  name: string;
-  type: string;
-  amount: number;
-  goal: number;
-  goalDeadline: string;
-  goalProgress: string;
+
+export interface DialogData {
+  assetName: string;
+  assetType: string;
+  assetAmount: number;
+  assetGoalAmount: number;
+  assetGoalDeadline: string;
 }
-
-const ELEMENT_DATA: Assets[] = [
-  {
-    name: 'Roth 401(k)',
-    type: 'Retirement',
-    amount: 45000,
-    goal: 200000,
-    goalDeadline: 'January 1, 2027',
-    goalProgress: '24%'
-  },
-  {
-    name: 'Roth IRA',
-    type: 'Retirement',
-    amount: 2500,
-    goal: 15000,
-    goalDeadline: 'January 1, 2027',
-    goalProgress: '10%'
-  },
-  {
-    name: 'IRA Brokerage',
-    type: 'Long-term Savings',
-    amount: 1500,
-    goal: 15000,
-    goalDeadline: 'January 1, 2027',
-    goalProgress: '15%'
-  },
-  {
-    name: 'Crypto',
-    type: 'Long-term Savings',
-    amount: 750,
-    goal: 5000,
-    goalDeadline: 'January 1, 2027',
-    goalProgress: '7.5%'
-  },
-  {
-    name: 'Personal Savings',
-    type: 'Emergency Savings',
-    amount: 2000,
-    goal: 5000,
-    goalDeadline: 'January 1, 2027',
-    goalProgress: '40%'
-  }
-];
 
 @Component({
   selector: 'app-assets-table',
@@ -60,25 +25,135 @@ const ELEMENT_DATA: Assets[] = [
   styleUrls: ['./assets-table.component.scss']
 })
 export class AssetsTableComponent implements OnInit, AfterViewInit {
-  // Table Properties
+ // Table Properties
+  public assets: Asset[] = [];
+  public editAsset: Asset;
+  public deleteAsset: Asset;
   displayedColumns: string[] = [
-    'name',
-    'type',
-    'amount',
-    'goal',
-    'goalDeadline',
-    'goalProgress'
+    'assetName',
+    'assetType',
+    'assetAmount',
+    'assetGoalAmount',
+    'assetGoalDeadline',
+    'assetGoalProgress',
+    'actions'
   ];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
-  clickedRows = new Set<Assets>();
+  clickedRows = new Set<Asset[]>();
+  isLoading = false;
 
-  constructor() {}
+  // Snackbar message properties
+  durationInSeconds = 3;
+
+  constructor(private assetService: AssetService,
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar) {}
+
 
   @ViewChild(MatSort) sort: MatSort;
 
   ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
+    // this.dataSource.sort = this.sort;
   }
 
-  ngOnInit(): void {}
+  ngOnInit() {
+    this.getAssets();
+  }
+
+  displayMessage(message: string) {
+
+  }
+
+  openNewAssetDialog(): void {
+    const createFormData = this.dialog.open(CreateAssetComponent, {
+      data:{
+        message: `Are you sure want to add a new asset?`,
+        buttonText: {
+          ok: 'Yes',
+          cancel: 'Cancel'
+        }
+      }
+    });
+    createFormData.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.getAssets();
+      this.snackBar.open('New Asset Created!', 'Dismiss', {
+        duration: 2000,
+        horizontalPosition: 'right',
+        verticalPosition: 'top'
+      });
+    });
+  }
+
+  openDeleteAssetDialog(assetId: number, assetName: string, ) {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent,{
+      data:{
+        message: `Are you sure want to delete asset ${assetName}?`,
+        buttonText: {
+          ok: 'Delete',
+          cancel: 'Cancel'
+        }
+      }
+    });
+    dialogRef.afterClosed().subscribe((confirmed: boolean) => {
+      if (confirmed) {
+        const a = document.createElement('a');
+        a.click();
+        a.remove();
+        this.onDeleteAsset(assetId);
+        this.snackBar.open('Asset Deleted', 'Dismiss', {
+          duration: 2000,
+          horizontalPosition: 'right',
+          verticalPosition: 'top'
+        });
+      }
+    });
+  }
+
+
+  public getAssets(): void {
+    this.assets = [];
+    this.assetService.getAssets().subscribe({
+      next: data => {
+        this.assets = data;
+      }, 
+      error: (err: HttpErrorResponse) => {
+        alert(err.message);
+      },
+      complete: () => {
+        console.log(this.assets);
+      }
+    });
+  }
+
+  openEditAssetDialog(row: Asset) {
+
+  }
+  
+
+
+  public onDeleteAsset(assetId: number): void {
+    this.assetService.deleteAsset(assetId).subscribe({
+      next: response => {
+        this.isLoading = true;
+        console.log(response);
+        this.getAssets();
+      },
+      error: (err: HttpErrorResponse) => {
+        alert(err.message);
+        this.isLoading = false;
+      },
+      complete: () => {
+        this.displayMessage('Asset Deleted');
+        this.isLoading = false;
+      }
+    });
+  }
+
+  public onOpenEditAssetDialog(asset: Asset) {
+    let dialogRef = this.dialog.open(CreateAssetComponent, {
+      width: '250px',
+      // data: { assetName: this.assetName }
+      });
+
+  }
 }

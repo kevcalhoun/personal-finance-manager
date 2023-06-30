@@ -37,6 +37,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSelectModule } from '@angular/material/select';
@@ -44,6 +45,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSortModule } from '@angular/material/sort';
 import { MatNativeDateModule } from '@angular/material/core';
 import { BudgetTableComponent } from './budgets/budget-table/budget-table.component';
+import { DashboardService } from './dashboard/dashboard.service';
+import { HttpClientModule } from '@angular/common/http';
+import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -68,13 +72,14 @@ import { BudgetTableComponent } from './budgets/budget-table/budget-table.compon
     CreateProfileComponent,
     UpdateProfileComponent,
     BudgetTableComponent,
+    ConfirmDialogComponent,
   ],
   imports: [
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
-
+    HttpClientModule,
     MatButtonModule,
     MatCardModule,
     MatCheckboxModule,
@@ -87,6 +92,7 @@ import { BudgetTableComponent } from './budgets/budget-table/budget-table.compon
     MatMenuModule,
     MatNativeDateModule,
     MatProgressBarModule,
+    MatProgressSpinnerModule,
     MatTableModule,
     MatTabsModule,
     MatSelectModule,
@@ -95,7 +101,7 @@ import { BudgetTableComponent } from './budgets/budget-table/budget-table.compon
     ReactiveFormsModule,
 
   ],
-  providers: [],
+  providers: [DashboardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
