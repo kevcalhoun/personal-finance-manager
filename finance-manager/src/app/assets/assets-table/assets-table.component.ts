@@ -38,6 +38,7 @@ export class AssetsTableComponent implements OnInit, AfterViewInit {
     'assetGoalProgress',
     'actions'
   ];
+  dataSource = new MatTableDataSource(this.assets);
   clickedRows = new Set<Asset[]>();
   isLoading = false;
 
@@ -52,7 +53,7 @@ export class AssetsTableComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
 
   ngAfterViewInit() {
-    // this.dataSource.sort = this.sort;
+    this.dataSource.sort = this.sort;
   }
 
   ngOnInit() {
