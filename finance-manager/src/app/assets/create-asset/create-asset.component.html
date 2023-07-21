@@ -1,18 +1,90 @@
-<h1 mat-dialog-title>New Asset</h1>
+<h2 mat-dialog-title>Create a New Asset</h2>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="createAssetForm" (ngSubmit)="onCreateAsset(createAssetForm.value)">
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Asset Name</mat-label>
+        <input matInput formControlName="assetName" required>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Asset Type</mat-label>
+          <mat-select formControlName="assetType" required>
+            <mat-option value="Retirement Investment">Retirement Investment</mat-option>
+            <mat-option value="Cash Savings">Cash Savings</mat-option>
+            <mat-option value="Home Equity">Home Equity</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Current Asset Amount</mat-label>
+          <input matInput formControlName="assetAmount" required>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <mat-accordion class="asset-goal-accordion">
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title class="asset-goal-accordion-title">
+                <mat-icon>add</mat-icon> Add Goal
+            </mat-panel-title>
+            <mat-panel-description>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+            <div class="row">
+              <div class="col-sm-6">
+                <mat-form-field appearance="outline">
+                  <mat-label>Asset Goal Amount</mat-label>
+                  <input matInput formControlName="assetGoalAmount">
+                </mat-form-field>
+              </div>
+              <div class="col-sm-6">
+                <mat-form-field appearance="outline">
+                  <mat-label>Asset Goal Deadline Date</mat-label>
+                  <input matInput [matDatepicker]="picker" formControlName="assetGoalDeadline">
+                  <mat-hint>MM/DD/YYYY</mat-hint>
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button type="submit" [mat-dialog-close]="true" [disabled]="createAssetForm.invalid" (click)="onCreateAsset(createAssetForm.value)" cdkFocusInitial>Create Asset</button>
+</mat-dialog-actions>
+
+
+
+
+
+
+
+<!-- <h1 mat-dialog-title>Create New Asset</h1>
 <div mat-dialog-content>
-  <p>{{data.name}}</p>
+ <p>{{data.name}}</p> 
   <form [formGroup]="createAssetForm">
 
     <div class="row">
       <mat-form-field appearance="outline" required>
         <mat-label>Asset Name</mat-label>
-        <input matInput formControlName="name" #assetName>
+        <input matInput formControlName="assetName" #assetName>
       </mat-form-field>
     </div>
     <div class="row">
       <div class="col-sm-6">
           <mat-form-field appearance="outline">
-              <mat-select formControlName="type">
+              <mat-select formControlName="assetType">
                   <mat-option value="investment">Investment</mat-option>
                   <mat-option value="savings">Cash Savings</mat-option>
                   <mat-option value="other">Other</mat-option>
@@ -23,7 +95,7 @@
       <div class="col-sm-6">
         <mat-form-field appearance="outline">
           <mat-label>Current Asset Amount</mat-label>
-          <input matInput formControlName="amount">
+          <input matInput formControlName="assetAmount">
         </mat-form-field>
       </div>
     </div>
@@ -62,5 +134,5 @@
 <div mat-dialog-actions>
   <button mat-raised-button color="warn" (click)="onNoClick()">Cancel</button>
   <button mat-raised-button color="primary" [mat-dialog-close]="data.animal" cdkFocusInitial (click)="openSnackBar('New Asset ' + assetName.value + ' has been added!', 'X')">Add Asset</button>
-</div>
+</div> -->
 

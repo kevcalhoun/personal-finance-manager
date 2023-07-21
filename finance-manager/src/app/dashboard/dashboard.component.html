@@ -5,8 +5,8 @@
         <div class="card-body">
           <h5 class="card-title">My Assets</h5>
           <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <p class="card-text text-success" id="currency">$38,500</p>
-          <a href="#" class="btn btn-primary">View Assets</a>
+          <p class="card-text text-success" id="currency">${{ totalAssetAmount }}</p>
+          <a routerLink="/assets" class="btn btn-primary">View Assets</a>
         </div>
       </div>
     </div>
@@ -16,7 +16,7 @@
           <h5 class="card-title">My Liabilities</h5>
           <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
           <p class="card-text text-danger" id="currency">$ 3,500</p>
-          <a href="#" class="btn btn-primary">View Liabilities</a>
+          <a routerLink="/liabilities" class="btn btn-primary">View Liabilities</a>
         </div>
       </div>
     </div>
@@ -45,7 +45,7 @@
           <div class="card-body">
             <h5 class="card-title">Upcoming Bills</h5>
             <p class="card-text">Use view-only calendar to show upcoming bills</p>
-            <a href="#" class="btn btn-primary">Update Bills</a>
+            <a routerLink="/bills" class="btn btn-primary">Update Bills</a>
           </div>
         </div>
     </div>
@@ -63,7 +63,7 @@
           <div class="card-body">
             <h5 class="card-title">Recent Accomplishments</h5>
             <p class="card-text">Preview of All Goals Reached Recently</p>
-            <a href="#" class="btn btn-primary">View My Goals</a>
+            <a routerLink="/goals" class="btn btn-primary">View My Goals</a>
           </div>
         </div>
     </div>
