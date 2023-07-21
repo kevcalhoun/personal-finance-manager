@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Liability } from './models/liabilty';
 
 @Component({
   selector: 'app-liabilities',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LiabilitiesComponent implements OnInit {
   title = "Liabilites";
+  liabilities: Liability[] = [];
   constructor() { }
 
   ngOnInit(): void {

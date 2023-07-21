@@ -1,1 +1,54 @@
-<p>create-liability works!</p>
+<h2 mat-dialog-title>Create a New Liability</h2>
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="createLiabilityForm" (ngSubmit)="onCreateLiability(createLiabilityForm.value)">
+        <div class="row">
+        <mat-form-field appearance="outline">
+            <mat-label>Liability Name</mat-label>
+            <input matInput formControlName="liabilityName" required>
+        </mat-form-field>
+        </div>
+
+        <div class="row">
+        <div class="col-sm-6">
+            <mat-form-field appearance="outline">
+            <mat-label>Liability Type</mat-label>
+            <mat-select formControlName="liabilityType" required>
+                <mat-option value="Student Loan">Student Loan</mat-option>
+                <mat-option value="Vehicle Loan">Vehicle Loan</mat-option>
+                <mat-option value="Credit Card">Credit Card</mat-option>
+                <mat-option value="Personal Loan">Personal Loan</mat-option>
+                <mat-option value="Other">Other</mat-option>
+            </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-sm-6">
+            <mat-form-field appearance="outline">
+            <mat-label>Current Remaining Loan Principle Amount</mat-label>
+            <input matInput formControlName="liabilityRemainingAmount" required>
+            </mat-form-field>
+        </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <mat-form-field appearance="outline">
+                <mat-label>Current Interest Rate</mat-label>
+                <input matInput formControlName="liabilityInterestRate" required>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+            <mat-form-field appearance="outline">
+                <mat-label>Minimimum Monthly Payment</mat-label>
+                <input matInput formControlName="liabilityMinMonthlyPayment">
+            </mat-form-field>
+            </div>
+        </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions >
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button type="submit" [mat-dialog-close]="true" [disabled]="createLiabilityForm.invalid" (click)="onCreateLiability(createLiabilityForm.value)" cdkFocusInitial>Create Liability</button>
+</mat-dialog-actions>
+
+
+
