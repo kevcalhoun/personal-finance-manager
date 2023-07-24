@@ -87,7 +87,7 @@
       >
         Goal Progress
       </th>
-      <td mat-cell *matCellDef="let element">{{ element.assetGoalProgress }}%</td>
+      <td mat-cell *matCellDef="let element">{{ getAssetGoalProgress(element.assetAmount, element.assetGoalAmount) }}</td>
     </ng-container>
 
     <ng-container matColumnDef="actions">

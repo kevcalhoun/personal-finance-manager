@@ -70,6 +70,17 @@ export class LiabilitiesTableComponent implements OnInit, AfterViewInit {
     });
   }
 
+  public getEstimatedPayoffDate(principalRemaining: number, annualInterestRate: number, minimumMonthlyPayment: number) {
+    const monthlyInterestRate = annualInterestRate / 12 / 100;
+    const numberOfMonths = -Math.log(1 - (monthlyInterestRate * principalRemaining) / minimumMonthlyPayment) / Math.log(1 + monthlyInterestRate);
+    const currentDate = new Date();
+    const estimatedPayoffDate = new Date(currentDate.setMonth(currentDate.getMonth() + Math.ceil(numberOfMonths)));
+
+    return estimatedPayoffDate.toDateString();
+  }
+
+  // TODO: move createLiability Method into this component from create-liability & call after close 
+  // SEE openDeleteDialog for reference on how to do this
   public openNewLiabilityDialog(): void {
     const createFormData = this.dialog.open(CreateLiabilityComponent, {
       data:{
@@ -83,11 +94,11 @@ export class LiabilitiesTableComponent implements OnInit, AfterViewInit {
     createFormData.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       this.getLiabilities();
-      this.snackBar.open('New Liability Created!', 'Dismiss', {
-        duration: 2000,
-        horizontalPosition: 'right',
-        verticalPosition: 'top'
-      });
+      // this.snackBar.open('New Liability Created!', 'Dismiss', {
+      //   duration: 2000,
+      //   horizontalPosition: 'right',
+      //   verticalPosition: 'top'
+      // });
     });
   }
 
