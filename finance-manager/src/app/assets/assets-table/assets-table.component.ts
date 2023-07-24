@@ -64,6 +64,26 @@ export class AssetsTableComponent implements OnInit, AfterViewInit {
 
   }
 
+  public getAssets(): void {
+    this.assets = [];
+    this.assetService.getAssets().subscribe({
+      next: data => {
+        this.assets = data;
+      }, 
+      error: (err: HttpErrorResponse) => {
+        alert(err.message);
+      },
+      complete: () => {
+        console.log(this.assets);
+      }
+    });
+  }
+
+  public getAssetGoalProgress(assetAmount: number, assetGoalAmount: number) {
+    const progressPercentage = Math.round((assetAmount/assetGoalAmount) * 100);
+    return progressPercentage.toString() + '%';
+  }
+
   openNewAssetDialog(): void {
     const createFormData = this.dialog.open(CreateAssetComponent, {
       data:{
@@ -111,20 +131,7 @@ export class AssetsTableComponent implements OnInit, AfterViewInit {
   }
 
 
-  public getAssets(): void {
-    this.assets = [];
-    this.assetService.getAssets().subscribe({
-      next: data => {
-        this.assets = data;
-      }, 
-      error: (err: HttpErrorResponse) => {
-        alert(err.message);
-      },
-      complete: () => {
-        console.log(this.assets);
-      }
-    });
-  }
+
 
   openEditAssetDialog(row: Asset) {
 
