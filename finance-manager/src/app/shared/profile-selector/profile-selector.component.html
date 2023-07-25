@@ -37,15 +37,14 @@
                         [hideRequiredMarker]="hideRequiredControl.value"
                         [floatLabel]="getFloatLabelValue()">
                         <mat-select>
-                            <mat-option value="household">Household</mat-option>
-                            <mat-option value="kevin">Kevin</mat-option>
-                            <mat-option value="kendall">Kendall</mat-option>
+                            <mat-option 
+                            *ngFor="let profile of profiles" value="profile.id">{{ profile.userFirstName }}</mat-option>
                         </mat-select>
                         <mat-label><mat-icon>perm_identity</mat-icon> <b> Profile</b></mat-label>
                     </mat-form-field>
                  
                 </form>
-                <button mat-raised-button color="primary">Switch Profile</button>
+                <button mat-raised-button color="primary" (click)="onSwitchProfile()">Switch Profile</button>
             </div>
 
         </div>

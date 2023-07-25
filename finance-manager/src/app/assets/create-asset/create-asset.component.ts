@@ -53,20 +53,9 @@ export class CreateAssetComponent implements OnInit {
       assetAmount: new FormControl(null),
       assetGoalAmount: new FormControl(null),
       assetGoalDeadline: new FormControl(null),
-    })
-    this.initForm();
+    });
   }
-
-  private initForm() {
-    //  this.asset.assetName = '';
-    // let assetType = '';
-    // let assetAmount = 0;
-    // let assetGoalAmount = 0;
-    // let assetGoalDeadline = '';
-
-
- 
-  }
+  
 
 
   public onCreateAsset(formData: Asset): void {

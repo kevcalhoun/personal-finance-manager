@@ -1,14 +1,14 @@
 <app-header [title]="title"></app-header>
 <div class="row">
     <div class="col-sm-12">
-        <div class="card border-success text-bg-light mb-3">
+        <div class="card border-danger text-bg-light mb-3">
                 
             <div class="card-body">
-                <h3>Total Debts: <b>${{ totalDebtAmount }}</b></h3>
+                <h3>Total Debts: <b id="total-debt-amt">${{ totalDebtAmount }}</b></h3>
 
-                <h4>+/- this Month: <b>- $450</b></h4>
+                <h4>+/- this Month: <b id="debt-monthly-change">- $450</b></h4>
 
-                <h4>+/- this Year: <b> - $6,000</b></h4>
+                <h4>+/- this Year: <b id="debt-yearly-change"> - $6,000</b></h4>
             
             </div>
         </div>

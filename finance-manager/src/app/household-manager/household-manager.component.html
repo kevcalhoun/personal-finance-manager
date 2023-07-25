@@ -1,0 +1,24 @@
+<div style="display: flex">
+    <mat-card 
+        class="col-12" 
+        style="margin: 1rem;">
+        <mat-card-header>
+            <mat-card-title>My Household</mat-card-title>
+            <img mat-card-avatar
+                src="../../assets/images/house-icon.png"
+                alt=""
+                style="width: 45px; height: 45px"
+                class="rounded-circle"/>
+            <mat-card-subtitle>Created: </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <h3>Members:</h3>
+            <app-profiles></app-profiles>
+        </mat-card-content>
+        <mat-card-actions>
+            <!-- <button mat-raised-button (click)="openEditProfileDialog(this.user)">Edit Profile</button>
+            <button mat-raised-button (click)="openDeleteProfileDialog(this.user.id, this.user.userFirstName, this.user.userLastName)">Edit Profile</button> -->
+        </mat-card-actions>
+    </mat-card>
+</div>
+

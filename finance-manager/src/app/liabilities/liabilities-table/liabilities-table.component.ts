@@ -102,7 +102,7 @@ export class LiabilitiesTableComponent implements OnInit, AfterViewInit {
     });
   }
 
-  public openDeleteLiabilityDialog(liabilityId: number, liabilityName: string, ) {
+  public openDeleteLiabilityDialog(liabilityId: number, liabilityName: string) {
     const dialogRef = this.dialog.open(ConfirmDialogComponent,{
       data:{
         message: `Are you sure want to delete liability ${liabilityName}?`,
