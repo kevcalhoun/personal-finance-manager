@@ -16,7 +16,7 @@ export class CreateProfileComponent implements OnInit {
   users: User[] = [];
   user!: User;
   createUserForm!: FormGroup;
-  userIncomeForm!: FormGroup;
+
 
   horizontalPosition: MatSnackBarHorizontalPosition = 'end';
   verticalPosition: MatSnackBarVerticalPosition = 'top';

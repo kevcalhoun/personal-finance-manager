@@ -49,7 +49,6 @@ import { DashboardService } from './dashboard/dashboard.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.component';
 import { HouseholdManagerComponent } from './household-manager/household-manager.component';
-import { IncomeComponent } from './income/income.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +75,6 @@ import { IncomeComponent } from './income/income.component';
     BudgetTableComponent,
     ConfirmDialogComponent,
     HouseholdManagerComponent,
-    IncomeComponent,
   ],
   imports: [
     AppRoutingModule,
