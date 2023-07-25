@@ -6,7 +6,7 @@ import { AssetsComponent } from './assets/assets.component';
 import { LiabilitiesComponent } from './liabilities/liabilities.component';
 import { BillsComponent } from './bills/bills.component';
 import { GoalsComponent } from './goals/goals.component';
-import { ProfilesComponent } from './profiles/profiles.component';
+import { HouseholdManagerComponent } from './household-manager/household-manager.component';
 
 const routes: Routes = [
   {
@@ -39,8 +39,8 @@ const routes: Routes = [
     component: GoalsComponent
   },
   {
-    path: 'profiles',
-    component: ProfilesComponent
+    path: 'household-manager',
+    component: HouseholdManagerComponent
   },
 ];
 

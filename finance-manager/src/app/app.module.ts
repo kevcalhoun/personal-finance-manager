@@ -48,6 +48,7 @@ import { BudgetTableComponent } from './budgets/budget-table/budget-table.compon
 import { DashboardService } from './dashboard/dashboard.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.component';
+import { HouseholdManagerComponent } from './household-manager/household-manager.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.c
     UpdateProfileComponent,
     BudgetTableComponent,
     ConfirmDialogComponent,
+    HouseholdManagerComponent,
   ],
   imports: [
     AppRoutingModule,

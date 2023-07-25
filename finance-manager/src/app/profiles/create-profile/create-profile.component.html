@@ -1,13 +1,104 @@
-<h1 mat-dialog-title>New Profile</h1>
-<div mat-dialog-content>
-  <p>{{data.name}}</p>
-  <mat-form-field appearance="fill">
-    <mat-label>First Name</mat-label>
-    <input matInput [(ngModel)]="data.animal">
-  </mat-form-field>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">Exit</button>
-  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Add Profile</button>
-</div>
+<h2 mat-dialog-title>Create a New Profile</h2>
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="createUserForm" (ngSubmit)="onCreateUserProfile(createUserForm.value)">
+        <div class="row">
+          <mat-form-field appearance="outline">
+              <mat-label>First Name</mat-label>
+              <input matInput formControlName="userFirstName" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="userLastName">
+        </mat-form-field>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6">
+              <mat-form-field appearance="outline">
+              <mat-label>Household</mat-label>
+              <mat-select formControlName="userHouseholdId" required>
+                  <mat-option value="1">Calhoun</mat-option>
+                  <mat-option value="2">Other</mat-option>
+              </mat-select>
+              </mat-form-field>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-sm-6">
+            <mat-form-field appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="userEmailAddress">
+            </mat-form-field>
+          </div>
+          <div class="col-sm-6">
+            <mat-form-field appearance="outline">
+              <mat-label>Phone</mat-label>
+              <input matInput formControlName="userPhoneNumber">
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6">
+            <mat-form-field appearance="outline">
+                <mat-label>Profile Image URL</mat-label>
+                <input matInput formControlName="userProfileImageUrl">
+            </mat-form-field>
+          </div>
+        </div>
+    
+        <div class="row">
+          <mat-accordion class="asset-goal-accordion">
+            <mat-expansion-panel hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title class="asset-goal-accordion-title">
+                    <mat-icon>add</mat-icon> Add Income Information
+                </mat-panel-title>
+                <mat-panel-description>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+
+                <div class="row">
+                  <div class="col-sm-6">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Employer</mat-label>
+                      <input matInput formControlName="userEmployer">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-sm-6">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Job Title</mat-label>
+                      <input matInput formControlName="userJobTitle">
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-6">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Current Annual Salary</mat-label>
+                      <input matInput formControlName="userAnhualSalary">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-sm-6">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Total Annual Bonus Income</mat-label>
+                      <input matInput formControlName="userAnnualBonusIncome">
+                    </mat-form-field>
+                  </div>
+                </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions >
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button type="submit" [mat-dialog-close]="true" [disabled]="createUserForm.invalid" (click)="onCreateUserProfile(createUserForm.value)" cdkFocusInitial>Create User</button>
+</mat-dialog-actions>
+
+
+
 
