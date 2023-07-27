@@ -32,19 +32,19 @@
             <!-- PROFILE SELECTOR DROPDOWN -->
             <div class="col">
                 
-                <form [formGroup]="options">
+                <form [formGroup]="profileSelectorForm" (ngSubmit)="onSelectProfile(profileSelectorForm.value)">
                     <mat-form-field appearance="outline"
                         [hideRequiredMarker]="hideRequiredControl.value"
                         [floatLabel]="getFloatLabelValue()">
-                        <mat-select>
+                        <mat-select formControlName="selectedUserId">
                             <mat-option 
-                            *ngFor="let profile of profiles" value="profile.id">{{ profile.userFirstName }}</mat-option>
+                            *ngFor="let profile of profiles" value="{{profile.id}}">{{ profile.userFirstName }}</mat-option>
                         </mat-select>
                         <mat-label><mat-icon>perm_identity</mat-icon> <b> Profile</b></mat-label>
                     </mat-form-field>
                  
                 </form>
-                <button mat-raised-button color="primary" (click)="onSwitchProfile()">Switch Profile</button>
+                <button mat-raised-button color="primary" (click)="onSelectProfile(profileSelectorForm.value)">Switch Profile</button>
             </div>
 
         </div>

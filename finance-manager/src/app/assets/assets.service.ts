@@ -16,6 +16,10 @@ export class AssetService {
         return this.http.get<Asset[]>(`${this.apiServerUrl}/asset/all`);
     }
 
+    public getAssetsByUserId(userId: number): Observable<Asset[]> {
+        return this.http.get<Asset[]>(`${this.apiServerUrl}/asset/find/${userId}`);
+    }
+
     public createAsset(asset: Asset): Observable<Asset> {
         return this.http.post<Asset>(`${this.apiServerUrl}/asset/add`, asset);
     }

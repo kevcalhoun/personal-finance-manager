@@ -4,13 +4,13 @@
         <div class="card border-success text-bg-light mb-3">
                 
             <div class="card-body">
-                <h3>Total Assets: <b>${{ totalAssetAmount }}</b></h3>
+                <h3>Total Assets: <b [ngStyle]="{'color': totalAssetAmount < 0 ? 'red' : 'green'}">${{ totalAssetAmount | number : '1.0-2' }}</b></h3>
 
-                <h4>Total Progress Towards Your Asset Goals: <b>{{ goalProgressAverage }}%</b></h4>
+                <h4>Total Progress Towards Your Asset Goals: <b [ngStyle]="{'color': totalAssetAmount < 0 ? 'red' : 'green'}">{{ goalProgressAverage | number : '1.0-2' }}%</b></h4>
 
-                <h4>+/- this Month: <b>+ $650</b></h4>
+                <h4>+/- this Month: <b [ngStyle]="{'color': totalAssetAmount < 0 ? 'red' : 'green'}">+ $650</b></h4>
 
-                <h4>+/- this Year: <b> + $1,850</b></h4>
+                <h4>+/- this Year: <b [ngStyle]="{'color': totalAssetAmount < 0 ? 'red' : 'green'}"> + $1,850</b></h4>
             
             </div>
         </div>
