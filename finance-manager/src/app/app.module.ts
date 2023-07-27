@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common'; 
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -80,6 +81,7 @@ import { HouseholdManagerComponent } from './household-manager/household-manager
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
+    CommonModule,
     FormsModule,
     HttpClientModule,
     MatButtonModule,

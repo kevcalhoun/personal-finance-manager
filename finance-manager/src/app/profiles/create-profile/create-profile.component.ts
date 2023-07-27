@@ -37,6 +37,7 @@ export class CreateProfileComponent implements OnInit {
       userJobTitle: new FormControl(null),
       userAnnualSalary: new FormControl(null),
       userAnnualBonusIncome: new FormControl(null),
+      userCreditScore: new FormControl(null)
     });
 
     

@@ -10,5 +10,6 @@ export interface User {
     userJobTitle: string;
     userAnnualSalary: number;
     userAnnualBonusIncome: number;
+    userCreditScore: number;
     userDateJoined: string;
 }

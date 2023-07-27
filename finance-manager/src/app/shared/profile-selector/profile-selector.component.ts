@@ -1,7 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { FloatLabelType } from '@angular/material/form-field';
+import { AssetService } from 'src/app/assets/assets.service';
+import { Asset } from 'src/app/assets/models/asset';
 import { User } from 'src/app/profiles/models/user';
 import { UserService } from 'src/app/profiles/user.service';
 
@@ -17,6 +19,7 @@ export class ProfileSelectorComponent implements OnInit {
    isLoading = false;
    public profiles: User[] = [];
    public profile!: User;
+   profileSelectorForm!: FormGroup;
    
    // profile dropdown form
    hideRequiredControl = new FormControl(false);
@@ -27,10 +30,14 @@ export class ProfileSelectorComponent implements OnInit {
    });
 
   constructor(private _formBuilder: FormBuilder,
-    private userService: UserService) { }
+    private userService: UserService,
+    private assetService: AssetService) { }
 
   ngOnInit(): void {
     this.loadProfiles();
+    this.profileSelectorForm = new FormGroup({
+      selectedUserId: new FormControl(null),
+    });
   }
 
   getFloatLabelValue(): FloatLabelType {
@@ -55,8 +62,9 @@ export class ProfileSelectorComponent implements OnInit {
     })
   }
 
-  public onSwitchProfile() {
-    this.panelOpenState = false;
-
+  public onSelectProfile(userId: number): void {
+    console.log(userId);
+    this.assetService.getAssetsByUserId(userId);
   }
+  
 }
