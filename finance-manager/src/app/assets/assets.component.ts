@@ -5,7 +5,6 @@ import { CreateAssetComponent } from './create-asset/create-asset.component';
 import { AssetService } from './assets.service';
 import { Asset } from './models/asset';
 import { HttpErrorResponse } from '@angular/common/http';
-import { DecimalPipe } from '@angular/common';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 

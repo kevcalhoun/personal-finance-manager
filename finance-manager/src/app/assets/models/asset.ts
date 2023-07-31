@@ -1,5 +1,6 @@
 export interface Asset {
     // id: number,
+    userId: number,
     assetName: string, 
     assetType: string,
     assetAmount: number,

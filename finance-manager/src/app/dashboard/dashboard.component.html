@@ -5,7 +5,10 @@
         <div class="card-body">
           <h5 class="card-title">My Assets</h5>
           <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <p class="card-text text-success" id="currency">${{ totalAssetAmount }}</p>
+          <p class="card-text" 
+            id="currency" 
+            [ngStyle]="{'color': totalAssetAmount < 0 ? 'red' : 'green'}">
+            ${{ totalAssetAmount| number : '1.0-2' }}</p>
           <a routerLink="/assets" class="btn btn-primary">View Assets</a>
         </div>
       </div>
@@ -15,7 +18,9 @@
         <div class="card-body">
           <h5 class="card-title">My Liabilities</h5>
           <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <p class="card-text text-danger" id="currency">$ 3,500</p>
+          <p class="card-text" 
+            [ngStyle]="{'color': totalAssetAmount < 0 ? 'green' : 'red'}"
+            id="currency">$ {{ totalLiabilityAmount | number : '1.0-2' }}</p>
           <a routerLink="/liabilities" class="btn btn-primary">View Liabilities</a>
         </div>
       </div>

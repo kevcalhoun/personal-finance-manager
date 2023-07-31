@@ -18,7 +18,7 @@ export class ProfileSelectorComponent implements OnInit {
 
    isLoading = false;
    public profiles: User[] = [];
-   public profile!: User;
+   public currentProfile!: User;
    profileSelectorForm!: FormGroup;
    
    // profile dropdown form
@@ -64,7 +64,9 @@ export class ProfileSelectorComponent implements OnInit {
 
   public onSelectProfile(userId: number): void {
     console.log(userId);
-    this.assetService.getAssetsByUserId(userId);
+    this.assetService.getAssetsByUserId(userId)
+    this.currentProfile = this.profileSelectorForm.value;
+    console.log(this.currentProfile);
   }
   
 }

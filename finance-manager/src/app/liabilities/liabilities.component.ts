@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Liability } from './models/liabilty';
 import { LiabilityService } from './liabilities.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'app-liabilities',
