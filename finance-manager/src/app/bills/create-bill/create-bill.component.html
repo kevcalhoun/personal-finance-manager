@@ -1,0 +1,75 @@
+<h2 mat-dialog-title>Add a New Bill</h2>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="createBillForm" (ngSubmit)="onCreateBill(createBillForm.value)">
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Bill Description</mat-label>
+        <input matInput formControlName="billDescription" required>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Bill Frequency</mat-label>
+          <mat-select formControlName="billFrequency" required>
+            <mat-option value="Weekly">Weekly</mat-option>
+            <mat-option value="BiWeekly">Bi-Weekly</mat-option>
+            <mat-option value="Monthly">Monthly</mat-option>
+            <mat-option value="BiMonthly">Bi Monthly</mat-option>
+            <mat-option value="Quarterly">Quarterly</mat-option>
+            <mat-option value="Yearly">Yearly</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Bill Amount</mat-label>
+          <input matInput formControlName="billAmount" placeholder="$" required>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <mat-form-field appearance="outline">
+                <mat-label>Next Payment Due Date</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="billPaymentDueDate">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div class="col-sm-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Company/Payee</mat-label>
+            <input matInput formControlName="billCompany" required>
+          </mat-form-field>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <mat-form-field appearance="outline">
+              <mat-label>Payment Portal URL</mat-label>
+              <input matInput formControlName="billPaymentPortalUrl" required>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <mat-checkbox formControlName="billAutoPay">AutoPay?</mat-checkbox>
+        </div>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button type="submit" [mat-dialog-close]="true" [disabled]="createBillForm.invalid" (click)="onCreateBill(createBillForm.value)" cdkFocusInitial>Create Bill</button>
+</mat-dialog-actions>
+
+
+
+
+

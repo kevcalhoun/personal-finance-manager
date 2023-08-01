@@ -50,6 +50,8 @@ import { DashboardService } from './dashboard/dashboard.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.component';
 import { HouseholdManagerComponent } from './household-manager/household-manager.component';
+import { BillsTableComponent } from './bills/bills-table/bills-table.component';
+import { CreateBillComponent } from './bills/create-bill/create-bill.component';
 
 @NgModule({
   declarations: [
@@ -76,6 +78,8 @@ import { HouseholdManagerComponent } from './household-manager/household-manager
     BudgetTableComponent,
     ConfirmDialogComponent,
     HouseholdManagerComponent,
+    BillsTableComponent,
+    CreateBillComponent,
   ],
   imports: [
     AppRoutingModule,
