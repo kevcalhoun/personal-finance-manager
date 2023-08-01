@@ -10,12 +10,12 @@
 </div>
 <table mat-table [dataSource]="bills" matSort class="mat-elevation-z8">
     <!-- Bill Description Column -->
-    <ng-container matColumnDef="billDescription">
+    <ng-container matColumnDef="bill-description">
       <th
         mat-header-cell
         *matHeaderCellDef
         mat-sort-header
-        sortActionDescription="Sort by assetName"
+        sortActionDescription="Sort by billDescription"
       >
         Description
       </th>
@@ -23,7 +23,7 @@
     </ng-container>
   
     <!-- Bill Amount Column -->
-    <ng-container matColumnDef="billAmount">
+    <ng-container matColumnDef="bill-amount">
       <th
         mat-header-cell
         *matHeaderCellDef
@@ -36,7 +36,7 @@
     </ng-container>
   
     <!-- Bill Frequency Column -->
-    <ng-container matColumnDef="billFrequency">
+    <ng-container matColumnDef="bill-frequency">
       <th
         mat-header-cell
         *matHeaderCellDef
@@ -52,7 +52,7 @@
     
   
     <!-- Bill Payment Due Date Column -->
-    <ng-container matColumnDef="billPaymentDueDate">
+    <ng-container matColumnDef="bill-payment-due-date">
       <th
         mat-header-cell
         *matHeaderCellDef
@@ -65,7 +65,7 @@
     </ng-container>
   
     <!-- Bill Company Column -->
-    <ng-container matColumnDef="billCompany">
+    <ng-container matColumnDef="bill-company">
       <th
         mat-header-cell
         *matHeaderCellDef
@@ -78,7 +78,7 @@
     </ng-container>
   
     <!-- Bill Payment Portal URL Column -->
-    <ng-container matColumnDef="billPaymentPortalUrl">
+    <ng-container matColumnDef="bill-payment-portal-url">
       <th
         mat-header-cell
         *matHeaderCellDef
@@ -87,11 +87,11 @@
       >
         Payment Portal
       </th>
-      <td mat-cell *matCellDef="let element">{{ element.billPaymentPortalUrl }}</td>
+      <td mat-cell *matCellDef="let element"><a href="{{ element.billPaymentPortalUrl }}" target="_blank">Pay My Bill</a></td>
     </ng-container>
 
     <!-- Bill AutoPay Column -->
-    <ng-container matColumnDef="billAutoPay">
+    <ng-container matColumnDef="bill-auto-pay">
         <th
           mat-header-cell
           *matHeaderCellDef
@@ -114,9 +114,10 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr
       mat-row
-      (click)="openEditBillDialog(row)"
-      [class.demo-row-is-clicked]="clickedRows.has(row)"
-      *matRowDef="let row; columns: displayedColumns;"
+      *matRowDef="let bill; columns: displayedColumns;"
+      (click)="onOpenEditBillDialog(this.bill)"
+      [class.demo-row-is-clicked]="clickedRows.has(bill)"
+      
     ></tr>
 </table>
 

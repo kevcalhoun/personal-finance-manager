@@ -20,13 +20,13 @@ export class BillsTableComponent implements OnInit, AfterViewInit {
   public editBill!: Bill;
   public deleteBill!: Bill;
   displayedColumns: string[] = [
-    'billDescription',
-    'billAmount',
-    'billFrequency',
-    'billPaymentDueDate',
-    'billCompany',
-    'billPaymentPortalUrl',
-    'billAutoPay',
+    'bill-description',
+    'bill-amount',
+    'bill-frequency',
+    'bill-payment-due-date',
+    'bill-company',
+    'bill-payment-portal-url',
+    'bill-auto-pay',
     'actions'
   ];
   dataSource = new MatTableDataSource(this.bills);

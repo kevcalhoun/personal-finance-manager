@@ -18,6 +18,12 @@
                     <li><b>Email: </b>{{ user.userEmailAddress }}</li>
                     <li><b>Phone: </b>{{ user.userPhoneNumber }}</li>
                 </ul>
+                <!-- <br>
+                <ul class="user-info-list">
+                    <li><b>Annual Salary: </b>${{ user.userAnnualSalary }}</li>
+                    <li><b>Total Compensation: </b>{{ user.userPhoneNumber }}</li>
+                </ul> -->
+              
             </mat-card-content>
             <mat-card-actions>
                 <button mat-raised-button (click)="openEditProfileDialog(this.user)">Edit</button>
