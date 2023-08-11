@@ -7,12 +7,17 @@ import { LiabilitiesComponent } from './liabilities/liabilities.component';
 import { BillsComponent } from './bills/bills.component';
 import { GoalsComponent } from './goals/goals.component';
 import { HouseholdManagerComponent } from './household-manager/household-manager.component';
+import { LandingComponent } from './landing/landing.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/dashboard',
+    redirectTo: '/landing',
     pathMatch: 'full'
+  },
+  { 
+    path: 'landing',
+    component: LandingComponent
   },
   {
     path: 'dashboard',
