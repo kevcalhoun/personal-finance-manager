@@ -1,0 +1,63 @@
+
+<h2 mat-dialog-title>Create Your Household Account</h2>
+<mat-dialog-content class="mat-typography">
+  
+    <mat-stepper [linear]="true" #stepper>
+        <mat-step [stepControl]="householdSetupForm">
+            <form [formGroup]="householdSetupForm">
+                <ng-template matStepLabel>Account Details</ng-template>
+                <div class="row">
+                    <mat-form-field>
+                        <mat-label>Household Name</mat-label>
+                        <input matInput placeholder="Household last name or nickname" formControlName="householdName" required>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Username</mat-label>
+                        <input matInput placeholder="Username" formControlName="householdUsername" required>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Password</mat-label>
+                        <input matInput placeholder="Password" formControlName="householdPassword" required>
+                    </mat-form-field>
+
+                        <div>
+                        <button mat-button matStepperNext>Next</button>
+                        </div>
+
+                </div>
+            </form>
+        </mat-step>
+
+        <mat-step [stepControl]="memberSetupForm" label="Account Members">
+            <form [formGroup]="memberSetupForm">
+                <mat-form-field>
+                <mat-label>First Name</mat-label>
+                <input matInput formControlName="userFirstName" placeholder="first name"
+                        required>
+                </mat-form-field>
+                <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step>
+        <ng-template matStepLabel>Confirm Account</ng-template>
+        <p>You are now done.</p>
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button 
+                mat-button 
+                type="submit"
+                [mat-dialog-close]="true" 
+                (click)="onSubmitRegistration(householdSetupForm.value, memberSetupForm.value)"
+                cdkFocusInitial>Create Account</button>
+        </div>
+        </mat-step>
+    </mat-stepper>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button 
+        mat-dialog-close>Cancel</button>
+</mat-dialog-actions>
+  

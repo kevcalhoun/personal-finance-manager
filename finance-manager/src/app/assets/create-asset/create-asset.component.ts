@@ -59,7 +59,6 @@ export class CreateAssetComponent implements OnInit {
 
 
   public onCreateAsset(formData: Asset): void {
-    const createFormData: Asset = this.createAssetForm.value;
     console.log(formData);
     this.assetService.createAsset(formData).subscribe({
       next: (response: Asset) => {

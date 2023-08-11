@@ -1,0 +1,48 @@
+<div class="background">
+</div>
+<form 
+    *ngIf="!isRegister"
+    [formGroup]="loginForm"
+    (ngSubmit)="onLogin(loginForm.value)">
+    <h3>Sign In</h3>
+
+    <div class="row">
+      <mat-form-field appearance="outline" >
+        <mat-label>username</mat-label>
+        <input matInput formControlName="username" required>
+      </mat-form-field>
+    </div>
+    <div class="row">
+        <mat-form-field appearance="outline">
+          <mat-label>password</mat-label>
+          <input matInput formControlName="password" required>
+        </mat-form-field>
+    </div>
+    <div class="login-message">
+        <p *ngIf="loginFailedAttemptMessage">
+            No account exists! Please try again or sign up!
+        </p>
+    </div>
+    <!-- <label for="username">Household Username</label>
+    <input type="text" name ="userName" [(ngModel)]="loginObj.UserName" placeholder="Email or Phone" id="username">
+  
+    <label for="password">Password</label>
+    <input type="password" name ="password" [(ngModel)]="loginObj.Password" placeholder="Password" id="password"> -->
+    <button mat-button
+        id="login-button" 
+        type="submit" 
+        [disabled]="loginForm.invalid" 
+        (click)="onLogin(loginForm.value)" 
+        cdkFocusInitial>Login</button>
+    <button mat-button
+        id="register-button" 
+        type="submit" 
+        [mat-dialog-close]="true" 
+        (click)="openRegistrationDialog()" 
+        cdkFocusInitial>Sign Up</button>
+    <!-- <button style="color: black" (click)="onLogin()">Log In</button> -->
+    <div class="social">
+
+       
+    </div>
+</form>

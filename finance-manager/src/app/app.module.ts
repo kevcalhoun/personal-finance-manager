@@ -45,6 +45,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSortModule } from '@angular/material/sort';
 import { MatNativeDateModule } from '@angular/material/core';
+import {MatStepperModule} from '@angular/material/stepper';
 import { BudgetTableComponent } from './budgets/budget-table/budget-table.component';
 import { DashboardService } from './dashboard/dashboard.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -52,6 +53,8 @@ import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.c
 import { HouseholdManagerComponent } from './household-manager/household-manager.component';
 import { BillsTableComponent } from './bills/bills-table/bills-table.component';
 import { CreateBillComponent } from './bills/create-bill/create-bill.component';
+import { LandingComponent } from './landing/landing.component';
+import { RegistrationComponent } from './landing/registration/registration.component';
 
 @NgModule({
   declarations: [
@@ -80,6 +83,8 @@ import { CreateBillComponent } from './bills/create-bill/create-bill.component';
     HouseholdManagerComponent,
     BillsTableComponent,
     CreateBillComponent,
+    LandingComponent,
+    RegistrationComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -101,13 +106,13 @@ import { CreateBillComponent } from './bills/create-bill/create-bill.component';
     MatNativeDateModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
-    MatTableModule,
-    MatTabsModule,
     MatSelectModule,
     MatSnackBarModule,
     MatSortModule,
+    MatStepperModule,
     ReactiveFormsModule,
-
+    MatTableModule,
+    MatTabsModule,
   ],
   providers: [DashboardService],
   bootstrap: [AppComponent]
